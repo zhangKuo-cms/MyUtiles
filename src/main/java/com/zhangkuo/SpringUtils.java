@@ -63,6 +63,8 @@ public class SpringUtils {
 	
 	/**
 	 * 随机n位英文字符串
+	 * random:nextInt(int n)方法:   返回一个伪随机数，它是取自此随机数生成器序列的、在 0（包括）和指定值（不包括）之间均匀分布的 int值。
+	 * random:nextInt()方法:   返回一个伪随机数，它是取自此随机数生成器序列中均匀分布的 int值。
 	 * @param n
 	 * @return
 	 */
