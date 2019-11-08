@@ -11,7 +11,6 @@ public class CmsException extends Exception{
 	
 
 	public CmsException(String string) {
-		// TODO Auto-generated constructor stub
 		super();
 	}
 

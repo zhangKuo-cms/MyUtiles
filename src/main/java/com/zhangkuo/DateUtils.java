@@ -6,11 +6,8 @@ import java.util.Date;
 import java.util.Locale;
 
 /** 
-
 * @author 作者 zk: 
-
 * @version 创建时间：2019年11月8日 下午1:06:56 
-
 */
 public class DateUtils {
 	static final long millionSecondsPerDay = 1000 * 60 * 60 * 24;
