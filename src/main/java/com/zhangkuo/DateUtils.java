@@ -51,6 +51,14 @@ public class DateUtils {
 		return age;
 	}
 	
+	//计算从之前日期到现在的年龄
+    public   static int countAge(Date date){
+		SimpleDateFormat sdf = new	SimpleDateFormat("yyyy");
+		int thisyear = Integer.valueOf(sdf.format(new Date()));
+		int finalyear = Integer.valueOf(sdf.format(date));
+		return thisyear-finalyear;
+	}
+	
 	/**
 	 * 判断是否为当天
 	 * @param date
@@ -119,4 +127,13 @@ public class DateUtils {
 		return cal.getTime();
 	}
 
+	public static Date getCreated() {
+		Date created = new Date();
+		return created;
+	}
+	
+	public static Date getPeriod() {
+		Date created = getCreated();
+		return created;
+	}
 }

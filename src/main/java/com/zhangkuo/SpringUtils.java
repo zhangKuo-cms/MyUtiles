@@ -1,4 +1,4 @@
-package com.zhangkuo;
+ package com.zhangkuo;
 
 import java.util.Random;
 import java.util.regex.Matcher;

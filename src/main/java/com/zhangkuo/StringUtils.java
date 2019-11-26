@@ -66,7 +66,29 @@ public class StringUtils {
 		
 	}
 	
-	
+	/**
+	 * 验证是否是URL
+	 * @param url
+	 * @return
+	 */
+	public static boolean isHttpUrl(String str){
+		
+		 //转换为小写
+        str = str.toLowerCase();
+        String regex = "^((https|http|ftp|rtsp|mms)?://)"  //https、http、ftp、rtsp、mms
+                + "?(([0-9a-z_!~*'().&=+$%-]+: )?[0-9a-z_!~*'().&=+$%-]+@)?" //ftp的user@  
+               + "(([0-9]{1,3}\\.){3}[0-9]{1,3}" // IP形式的URL- 例如：199.194.52.184               
+                 + "|" // 允许IP和DOMAIN（域名） 或单域名
+                 + "[0-9a-z]*"  // 或单域名
+                 + "|" // 允许IP和DOMAIN（域名） 或单域名
+                 + "([0-9a-z_!~*'()-]+\\.)*" // 域名- www.  
+                 + "([0-9a-z][0-9a-z-]{0,61})?[0-9a-z]\\." // 二级域名  
+                + "[a-z]{2,6})" // first level domain- .com or .museum  
+                + "(:[0-9]{1,5})?" // 端口号最大为65535,5位数
+                + "((/?)|" // a slash isn't required if there is no file name  
+                + "(/[0-9a-z_!~*'().;?:@&=+$,%#-]+)+/?)$";  
+        return  str.matches(regex);	
+	}
 	
 	/**
 	 * 判断源字符串是否为空，空引号也算没有值；
@@ -122,6 +144,62 @@ public class StringUtils {
 		return sb.toString();
 		
 	}
+	
+	/**
+	 * 随机生成长度为n的数字字符串
+	 * @param n
+	 * @return
+	 */
+	public static int getRandomNumber(int n) {
+		
+		Random random = new Random();
+		
+		int r = random.nextInt(5);
+		
+		return r;
+	}
+	
+	/**
+	 * 随机生成长度为n的数字字符串
+	 * @param n
+	 * @return
+	 */
+	public static int getRandomNumber2(int n) {
+		
+		Random random = new Random();
+		
+		int r = random.nextInt(3);
+		
+		return r;
+	}
+	
+	/**
+	 * 随机生成长度为40的数字字符串
+	 * @param n
+	 * @return
+	 */
+	public static int getRandomNumber3(int n) {
+		
+		Random random = new Random();
+		
+		int r = random.nextInt(41);
+		
+		return r;
+	}
+	
+	/**
+	 * 生成指定长度的数字随机数
+     * @param length 长度
+     * @return String
+     */
+	public static  String getRandNumberCode (int length)    {   
+        Random random = new Random();
+        String result="";
+        for(int i=0;i<length;i++){
+            result+=random.nextInt(10);
+        }
+        return result;
+    }
 	
 	/**
 	  *获取一个文件名称的扩展名
@@ -205,8 +283,49 @@ public class StringUtils {
 		return dst;
 	}
 	
+	/**
+	 * 获取公司名称
+	 * @return
+	 */
+	public static String getCname() {
+		int i = getRandomNumber(1);
+		int a = getRandomNumber2(1);
+		String[] arr = {"有限公司","股份有限公司","集团有限公司"};
+		if (i==0) {
+			i++;
+			if (i==1) {
+				i++;
+				String randomCn = SpringUtils.getRandomCn(i);
+				return "北京"+randomCn+arr[a];
+			}
+		}else if (i==1){
+			i++;
+			String randomCn = SpringUtils.getRandomCn(i);
+			return "北京"+randomCn+arr[a];
+		}else {
+			String randomCn = SpringUtils.getRandomCn(i);
+			return "北京"+randomCn+arr[a];
+		}
+		return null;
+	}
 	
+	public static String getAddress() {
+		String randomCn ="";
+		int i = getRandomNumber3(1);
+		if (i<20) {
+			i=20;
+			randomCn = SpringUtils.getRandomCn(i);
+		}else {
+			randomCn = SpringUtils.getRandomCn(i);
+		}
+		return "北京市"+randomCn;
+	}
 	
-	
-
+	public static String generateChineseName() {
+		String randomCn = "";
+		for (int i = 2; i <= 3; i++) {
+			randomCn = SpringUtils.getRandomCn(i);
+		}
+		return randomCn;
+	}
 }
